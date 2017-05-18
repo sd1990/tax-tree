@@ -1,17 +1,21 @@
 package org.songdan.tax;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.util.Date;
 
-public class TaxCategory {
+public class TaxCategory implements Comparable<TaxCategory> {
 
     /**
      * 主键
      */
+    @JsonIgnore
     private String categoryId;
 
     /**
      * 编码
      */
+    @JsonIgnore
     private String code;
 
     /**
@@ -27,41 +31,49 @@ public class TaxCategory {
     /**
      * 说明
      */
+    @JsonIgnore
     private String explained;
 
     /**
      * 增值税特殊管理
      */
+    @JsonIgnore
     private String addedTaxSpecial;
 
     /**
      * 增值税政策依据
      */
+    @JsonIgnore
     private String addedTaxBasis;
 
     /**
      * 增值税特殊内容代码
      */
+    @JsonIgnore
     private String addedTaxContent;
 
     /**
      * 消费税管理
      */
+    @JsonIgnore
     private String consumptionTax;
 
     /**
      * 消费税政策依据
      */
+    @JsonIgnore
     private String consumptionTaxBasis;
 
     /**
      * 消费税特殊内容代码
      */
+    @JsonIgnore
     private String consumptionTaxContent;
 
     /**
      * 关键字
      */
+    @JsonIgnore
     private String keyword;
 
     /**
@@ -72,52 +84,64 @@ public class TaxCategory {
     /**
      * 增值税税率
      */
+    @JsonIgnore
     private String taxRateId;
 
     /**
      * 编码主键
      */
+    @JsonIgnore
     private String productTaxCodeId;
 
     /**
      * 对应统计局编码或国民行业代码
      */
+    @JsonIgnore
     private String nationalIndustryId;
 
     /**  */
+    @JsonIgnore
     private String taxRate;
 
     /**  */
+    @JsonIgnore
     private String taxRateDesc;
 
     /**
      * 税率值
      */
+    @JsonIgnore
     private String taxRateValue;
 
-    //=====================================||
+    // =====================================||
     // 以下为2017税收分类编码表更新新增字段||
-    //=====================================||
+    // =====================================||
 
     /**
      * 版本号
      */
+    @JsonIgnore
     private String bbh;
 
     /**
      * 可用状态
      */
+    @JsonIgnore
     private String kyzt;
 
     /**
      * 海关进出口商品品目
      */
+    @JsonIgnore
     private String customsGoodsItem;
 
+    @JsonIgnore
     private Date qysj;
 
+    @JsonIgnore
     private Date gdqjzsj;
 
+    @JsonIgnore
     private Date gxsj;
 
     public String getTaxRateValue() {
@@ -323,5 +347,10 @@ public class TaxCategory {
     @Override
     public String toString() {
         return "TaxCategory{goodsName:" + goodsName + ",mergeCoding:" + mergeCoding + "}  ";
+    }
+
+    @Override
+    public int compareTo(TaxCategory o) {
+        return mergeCoding.compareTo(o.mergeCoding);
     }
 }
